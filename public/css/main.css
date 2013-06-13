@@ -1,0 +1,154 @@
+/** RESET **/
+* { margin: 0; padding: 0; border: 0; }
+li { list-style: none; }
+a {text-decoration: none;}
+
+/** GENERAL **/
+body { background: #fff; font-family: "Roboto", sans-serif; }
+h1, h2, h3 { font-family: "Roboto", sans-serif; text-shadow: 0 -1px 1px rgba(0, 0, 0, .5); }
+.center {text-align: center;}
+
+
+/** HEADER **/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #3F72D8;
+}
+header h1 a {
+    float: left;
+    margin-left: 20px;
+    line-height: 55px;
+    color: #fff;
+}
+header ul {
+    float: right;
+    padding-top: 15px;
+    width: 100px;
+}
+header ul li {
+    display:block;
+    float: left;
+    margin-left: 10px;
+}
+header form input#tools {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    width: 400px;
+    height: 30px;
+    padding: 5px 40px 5px 5px;
+    margin: 0px 0px 0px -223px;
+    border: 1px solid #A8A8A8;
+    background: #fff;
+    color: #000;
+    font-size: 20px;
+}
+header form input:last-child {
+    position: absolute;
+    cursor: pointer;
+    top: 15px;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 188px;
+    background: #fff url('../images/loupe.png') no-repeat;
+    color: #222;
+    font-size: 15px;
+}
+
+/** CONTENT **/
+article {
+    width: 800px;
+    margin: 90px auto;
+}
+article h1, article h2 {
+    color: #3F72D8;
+    border-bottom: 1px solid #D8D8D8;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+article a { color: #3F72D8; }
+article a:hover { color: #A04006; }
+
+article p {
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.bloc {
+    background: #F8F8F8;
+    border: 1px solid #D8D8D8;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+/** FORM **/
+article form p {
+    margin-bottom: 5px;
+}
+article form label {
+    display:block;
+    padding-left: 10px;
+}
+article form input[type=text] {
+    width: 765px;
+    padding: 5px;
+    margin-top: 4px;
+    border: 1px solid #A8A8A8;
+    background: #fff;
+    color: #000;
+    font-size: 20px;
+}
+article form input[type=submit] {
+    margin-top: 10px;
+    background: #3F72D8;
+    width: 200px;
+    padding: 10px;
+    color: #fff;
+}
+
+article #error-msg {
+    display: none;
+    border: 1px solid #A04006;
+    padding: 10px 10px 10px 42px;
+    background: #FFD2D3 url('../images/error.png') no-repeat;
+    background-position: 5px center;
+    color: #871414;
+
+}
+
+/** JQUERY UI **/
+.ui-helper-hidden-accessible {
+    display: none;
+}
+ul.ui-autocomplete {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 445px;
+}
+.ui-menu-item {
+    background: #F8F8F8;
+    border-left: 1px solid #A8A8A8;
+    border-right: 1px solid #A8A8A8;
+    border-bottom: 1px solid #A8A8A8;
+    padding: 10px;
+}
+
+
+/** FOOTER **/
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #eee;
+    line-height: 50px;
+    text-align:center;
+}

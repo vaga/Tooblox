@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Tooblox - <?php echo $this->get('_title', 'Untitled') ?></title>
+    <meta name="description" content="<?php echo $this->get('_description'); ?>" />
+    <meta name="keywords" content="<?php echo $this->get('_keywords'); ?>">
+    <meta name="author" content="<?php echo $this->get('_author'); ?>">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        var tools = ["<?php echo implode('","', $this->get('tools')); ?>"];
+    </script>
+</head>
+<body>
+    <header>
+        <h1> <a href="/"> Tooblox </a> </h1>
+        <ul class="social">
+            <li><a href=""><img title="Twitter" alt="Twitter" src="images/social/twitter.png"></a></li>
+            <li><a href=""><img title="Google+" alt="Google+" src="images/social/gplus.png"></a></li>
+        </ul>
+        <form action="/" method="post">
+            <input id="tools" type="text" name="tool" value="" placeholder="Choose your tool" />
+            <input type="submit" value="" />
+        </form>
+    </header>
+    <article>
+        <div id="error-msg" class="bloc"></div>

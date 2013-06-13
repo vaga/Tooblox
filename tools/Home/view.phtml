@@ -1,0 +1,10 @@
+<h1> Welcome in Tooblox </h1>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, sapien convallis pharetra consectetur, nisl nisl luctus ante, eget vestibulum justo sem non nisi. Duis non nisi in lacus rhoncus accumsan vitae lobortis justo. Etiam gravida auctor nisi, sit amet aliquam ligula porta sed. Duis sit amet iaculis turpis, ac venenatis quam. Suspendisse nec nibh pulvinar, bibendum massa et, suscipit lorem. Sed augue neque, lacinia quis tristique a, tincidunt vitae nisi. Nam condimentum mollis odio, in laoreet mauris aliquet et. Vivamus sed elit pulvinar, auctor risus sit amet, convallis justo. Duis at erat id turpis mollis pulvinar vitae quis tortor. Mauris lacinia justo laoreet diam feugiat, eget posuere lectus dapibus. Donec mattis, ipsum in suscipit consectetur, nibh augue consequat massa, quis bibendum mauris dolor ut tellus. Proin lobortis lacus vel nisi rhoncus, quis blandit ante euismod. Etiam a risus nisi. Vestibulum eu libero fringilla, eleifend mi elementum, fermentum felis. Vivamus nec felis eleifend, feugiat mi id, feugiat ligula. Ut sed facilisis odio. 
+</p>
+<h2>Tools !</h2>
+<ul>
+<?php foreach($this->get('tools') as $slug => $name): ?>
+<li><a href="/<?php echo $slug; ?>"><?php echo $name; ?></a></li>
+<?php endforeach; ?>
+</ul>

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ $# -eq 1 ]; then
+
+    echo "Generating tool : " $1
+
+    if [ -d "tools/$1" ]; then
+        echo "Tool $1 exists"
+        exit
+    fi
+
+    echo "Create the folder"
+    cp -R "tools/__Gen__" "tools/$1"
+    echo "Create the class Tool"
+    mv "tools/$1/__Gen__.php" "tools/$1/$1.php"
+    echo "Edit the class Tool"
+    sed -i "s/__Gen__/$1/g" "tools/$1/$1.php"
+
+else
+    echo "./tooblox toolName"
+fi

@@ -1,0 +1,36 @@
+<form id="caesar" class="bloc" action="#">
+    <h1> Tool : Caesar </h1>
+    <p><label>Your text</label><input type="text" id="text" /></p>
+    <p><label>Key</label><input type="text" id="key" /></p>
+    <p class="center"><input type="submit" value="Execute" /></p>
+</form>
+<section class="bloc">
+    <h2> Result </h2>
+    Le resultat est <span id="result"> </span>
+</section>
+
+<script>
+
+function CesarEncode(cle, message) {
+    var resultat = "";
+    var decalage = parseInt(cle);
+    message = message.toUpperCase();
+    var longueur = message.length;
+    for (var i = 0; i < longueur; i++) {
+        var val = message.charCodeAt(i) - 65;
+        if (val >= 0)
+            resultat += String.fromCharCode(((val + decalage) % 26) + 65);
+    }
+    return resultat;
+}
+
+$(document).ready(function() {
+
+    $('#caesar').submit(function() {
+        var result = CesarEncode($("#key").val(), $('#text').val());
+        $('#result').html("" + result);
+        errorHandler("Une erreur est survenue !");
+        return false;
+    });
+});
+</script>
