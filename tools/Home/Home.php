@@ -9,7 +9,7 @@ class Home extends AbstractTool {
     function __construct() {
 
         $this->set('_title', 'Home');
-        $this->set('_description', 'Tooblox is ...');
+        $this->set('_description', 'Tooblox is all you need...');
         $this->set('_keywords', 'tools, box, hack, developper');
         $this->set('_author', 'Etienne Bondot, Fabien Casters');
     }

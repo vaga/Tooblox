@@ -1,0 +1,34 @@
+<section class="bloc">
+    <h2> Result </h2>
+    <span id="result"> </span>
+</section>
+<div id="map-canvas" style="width:100%; height:300px;"/>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHCL5FNni4ddZbF_w54Tg-qgG9GyCbUwA&sensor=true"></script>
+<script>
+	$(document).ready(function() {
+	    var mapOptions = {
+			zoom: 8,
+			center: new google.maps.LatLng(0, 0),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+	    $.getJSON("http://smart-ip.net/geoip-json?callback=?",
+	        function(data){
+	            $('#result').html(	"Host     : " + data.host + "<br />" +
+					            	"Country  : " + data.countryName + "<br />" +
+					            	"City     : " + data.city + "<br />" +
+					            	"Region   : " + data.region + "<br />" +
+					            	"Longitude: " + data.latitude + "<br />" +
+					            	"Latitude : " + data.longitude + "<br />" +
+					            	"Timezone : " + data.timezone + "<br />");
+	            var latlong = new google.maps.LatLng(data.latitude, data.longitude);
+	            var marker = new google.maps.Marker();
+	            marker.setMap(map);
+	            marker.setPosition(latlong);
+	            map.setCenter(latlong);
+	            return false;
+        });
+	});
+</script>

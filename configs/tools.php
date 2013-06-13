@@ -3,7 +3,6 @@
 return array(
     'home' => "Home",
     'caesar' => 'Caesar',
-    'color-picker' => 'Color Picker',
-    'crop-image' => 'Crop Image',
+    'my-ip' => 'My IP',
     'random' => 'Random'
 );
