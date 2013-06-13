@@ -5,4 +5,5 @@ return array(
     'caesar' => 'Caesar',
     'color-picker' => 'Color Picker',
     'crop-image' => 'Crop Image',
+    'random' => 'Random'
 );

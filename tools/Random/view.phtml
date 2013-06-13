@@ -1,0 +1,26 @@
+<form id="random" class="bloc" action="#">
+    <h1> Tool : Random</h1>
+    <p><label>max</label><input type="text" id="max" /></p>
+    <p><label>min</label><input type="text" id="min" /></p>
+    <p class="center"><input type="submit" value="Execute" /></p>
+</form>
+<section class
+<section class="bloc">
+    <h2> Result </h2>
+    <span id="result"> </span>
+</section>
+
+<script>
+    function Random($start, $end) {
+        var res = mt_rand($start, $end);
+        return $res;
+    }
+    $(document).ready(function() {
+        $('#random').submit(function() {
+            var result = Random($("#min").val(), $('#max').val());
+            $('#result').html("" + result);
+            errorHandler("Something bad happened...");
+            return false;
+        });
+    });
+</script>

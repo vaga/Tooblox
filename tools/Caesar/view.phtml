@@ -29,7 +29,7 @@ $(document).ready(function() {
     $('#caesar').submit(function() {
         var result = CesarEncode($("#key").val(), $('#text').val());
         $('#result').html("" + result);
-        errorHandler("Une erreur est survenue !");
+        errorHandler("Something bad happened...");
         return false;
     });
 });
