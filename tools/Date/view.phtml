@@ -1,0 +1,39 @@
+<p>Chose your timezone : </p>
+<form name="formulaire" class="bloc">
+	<p>Tokyo : <input type="radio" name="cities" value="villes" OnClick="heure_gmt(9); $('#res').show();"></p>
+	<p>Paris : <input type="radio" name="cities" value="villes" OnClick="heure_gmt(2); $('#res').show();"></p>
+	<p>New York : <input type="radio" name="cities" value="villes" OnClick="heure_gmt(-5); $('#res').show();"></p>
+</form>
+
+<section class="bloc" id="res">
+	<span id="date"></span>
+</section>
+
+<script>
+	var memoire = 0;
+	$(document).ready(function() {
+
+		$('#res').hide();
+	});
+	
+	function heure_gmt(fuseau) {
+		memoire = fuseau;
+		var x = new Date();
+		var heure_gmt_temp = x.getUTCHours();
+		var heure_gmt = heure_gmt_temp + fuseau;
+		if ( heure_gmt < 0 ) {
+			heure_gmt = 24 + heure_gmt;
+		}
+		if (heure_gmt > 23) {
+			heure_gmt = heure_gmt - 24;
+		}
+		if (heure_gmt <= 9) heure_gmt = "0" + heure_gmt;
+		var minutes = x.getMinutes();
+		if (minutes <= 9) minutes = "0" + minutes;
+		var secondes = x.getSeconds();
+		if (secondes <= 9) secondes = "0" + secondes;
+		var gmt = heure_gmt + ":" + minutes + ":" + secondes;
+		$('#date').html("GMT : " + x.toGMTString() + " - " + gmt);
+		setTimeout("heure_gmt(memoire);",1000);
+	}
+</script>
