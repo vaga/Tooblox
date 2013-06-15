@@ -1,9 +1,23 @@
-<form id="caesar" class="bloc" action="#">
-    <h1> Tool : Caesar </h1>
-    <p><label>Your text</label><input type="text" id="text" /></p>
-    <p><label>Key</label><input type="text" id="key" /></p>
+<form id="choice" class="bloc" action="#">
+    <p class="center">
+    <input type="submit" id="encode" value="encode"/>
+    <input type="submit" id="decode" value="decode"/>
+    </p>
+</form>
+
+<form id="caesar_encode" class="bloc" action="#">
+    <h1> Tool : [encode]Caesar </h1>
+    <p><label>Your text to encode</label><input type="text" id="text_encode" /></p>
+    <p><label>Key</label><input type="text" id="key_encode" /></p>
     <p class="center"><input type="submit" value="Execute" /></p>
 </form>
+
+<form id="caesar_decode" class="bloc" action="#" >
+    <h1>Tool : [decode]Cesar </h1>
+    <p><label>You text to decode</label><input type="text" id="text_decode"/></p>
+    <p class="center"><input type="submit" value="Execute" /></p>
+</form>
+
 <section class="bloc">
     <h2> Result </h2>
     Le resultat est <span id="result"> </span>
@@ -11,25 +25,64 @@
 
 <script>
 
-function CesarEncode(cle, message) {
-    var resultat = "";
-    var decalage = parseInt(cle);
-    message = message.toUpperCase();
-    var longueur = message.length;
-    for (var i = 0; i < longueur; i++) {
-        var val = message.charCodeAt(i) - 65;
-        if (val >= 0)
-            resultat += String.fromCharCode(((val + decalage) % 26) + 65);
+    function CesarEncode(cle, message) {
+        var resultat = "";
+        var decalage = parseInt(cle);
+        message = message.toUpperCase();
+        var longueur = message.length;
+        for (var i = 0; i < longueur; i++) {
+            var val = message.charCodeAt(i) - 65;
+            if (val >= 0)
+                resultat += String.fromCharCode(((val + decalage) % 26) + 65);
+        }
+        return resultat;
     }
-    return resultat;
-}
 
-$(document).ready(function() {
+    function CesarDecode(message) {
+        var result = "<br />";
+        var length = message.length;
+        for (i = 0; i < 26; i++) {
+            for (j = 0; j < length; j++) {
+                var val = message.charCodeAt(j) - 65;
+                if (message.charCodeAt(j) == 32)
+                    result += ' ';
+                else if (val >= 0)
+                    result += String.fromCharCode(((val + i) % 26) + 65);
+            }
+            result += "<br />";
+        }
+        return result;
+    }
 
-    $('#caesar').submit(function() {
-        var result = CesarEncode($("#key").val(), $('#text').val());
-        $('#result').html("" + result);
-        return false;
+    $(document).ready(function() {
+
+        $('#caesar_encode').hide();
+        $('#caesar_decode').hide();
+
+        var encode_form = document.getElementById('encode');
+        var decode_form = document.getElementById('decode');
+        encode_form.addEventListener('click', function() {
+            $('#caesar_encode').show();
+            $('#caesar_decode').hide();
+            $('#result').html("");
+            return false;
+        });
+        decode_form.addEventListener('click', function() {
+            $('#caesar_encode').hide();
+            $('#caesar_decode').show();
+            $('#result').html("");
+            return false;
+        });     
+
+        $('#caesar_encode').submit(function() {
+            var result = CesarEncode($("#key_encode").val(), $('#text_encode').val());
+            $('#result').html("" + result);
+            return false;
+        });
+        $('#caesar_decode').submit(function() {
+            var result = CesarDecode($('#text_decode').val());
+            $('#result').html("" + result);
+            return false;
+        });
     });
-});
 </script>
