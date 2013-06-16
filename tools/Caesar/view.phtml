@@ -1,20 +1,20 @@
 <form id="choice" class="bloc" action="#">
     <p class="center">
-    <input type="submit" id="encode" value="encode"/>
-    <input type="submit" id="decode" value="decode"/>
+    <input type="submit" id="encode" value="Encode"/>
+    <input type="submit" id="decode" value="Decode"/>
     </p>
 </form>
 
 <form id="caesar_encode" class="bloc" action="#">
-    <h1> Tool : [encode]Caesar </h1>
-    <p><label>Your text to encode</label><input type="text" id="text_encode" /></p>
+    <h1> Tool : Encode Caaesar </h1>
+    <p><label>Your text</label><input type="text" id="text_encode" /></p>
     <p><label>Key</label><input type="text" id="key_encode" /></p>
     <p class="center"><input type="submit" value="Execute" /></p>
 </form>
 
 <form id="caesar_decode" class="bloc" action="#" >
-    <h1>Tool : [decode]Cesar </h1>
-    <p><label>You text to decode</label><input type="text" id="text_decode"/></p>
+    <h1>Tool : Decode Caesar </h1>
+    <p><label>Your text</label><input type="text" id="text_decode"/></p>
     <p class="center"><input type="submit" value="Execute" /></p>
 </form>
 
@@ -72,7 +72,7 @@
             $('#caesar_decode').show();
             $('#result').html("");
             return false;
-        });     
+        });
 
         $('#caesar_encode').submit(function() {
             var result = CesarEncode($("#key_encode").val(), $('#text_encode').val());
