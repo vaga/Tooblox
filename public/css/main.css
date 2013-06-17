@@ -120,6 +120,12 @@ article form input[type=submit] {
     color: #fff;
 }
 
+article form .color {
+    width: 200px;
+    height: 30x;
+    border: 1px solid black;
+}
+
 article #error-msg {
     display: none;
     border: 1px solid #A04006;
