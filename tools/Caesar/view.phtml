@@ -6,7 +6,7 @@
 </form>
 
 <form id="caesar_encode" class="bloc" action="#">
-    <h1> Tool : Encode Caaesar </h1>
+    <h1> Tool : Encode Caesar </h1>
     <p><label>Your text</label><input type="text" id="text_encode" /></p>
     <p><label>Key</label><input type="text" id="key_encode" /></p>
     <p class="center"><input type="submit" value="Execute" /></p>
@@ -41,8 +41,8 @@
     function CesarDecode(message) {
         var result = "<br />";
         var length = message.length;
-        for (i = 0; i < 26; i++) {
-            for (j = 0; j < length; j++) {
+        for (var i = 0; i < 26; i++) {
+            for (var j = 0; j < length; j++) {
                 var val = message.charCodeAt(j) - 65;
                 if (message.charCodeAt(j) == 32)
                     result += ' ';
@@ -55,17 +55,20 @@
     }
 
     $(document).ready(function() {
-
-        $('#caesar_encode').hide();
-        $('#caesar_decode').hide();
+        window.onload = function() {
+            $('#caesar_encode').hide();
+            $('#caesar_decode').hide();
+        }
 
         var encode_form = document.getElementById('encode');
         var decode_form = document.getElementById('decode');
+        
         encode_form.addEventListener('click', function() {
             $('#caesar_encode').show();
             $('#caesar_decode').hide();
             $('#result').html("");
             return false;
+
         });
         decode_form.addEventListener('click', function() {
             $('#caesar_encode').hide();

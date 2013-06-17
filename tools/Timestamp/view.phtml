@@ -1,0 +1,13 @@
+<section class="bloc">
+	<h1> Tool : Timestamp </h1>
+	<p class="center">
+		Number of seconds since Epoch : <span id="result"> </span>
+	</p>
+</section>
+
+<script>
+	$(document).ready(function() {
+		var timestamp = new Date().getTime();
+		$('#result').html("" + timestamp);
+	});
+</script>

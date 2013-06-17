@@ -5,5 +5,7 @@ return array(
     'caesar' => 'Caesar',
     'date' => 'Date',
     'my-ip' => 'My IP',
-    'random' => 'Random'
+    'random' => 'Random',
+    'timestamp' => 'Timestamp',
+    'vigenere' => 'Vigenere'
 );

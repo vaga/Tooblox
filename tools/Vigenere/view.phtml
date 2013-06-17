@@ -1,0 +1,141 @@
+<form id="choice" class="bloc" action="#">
+    <p class="center">
+    <input type="submit" id="encode" value="Encode"/>
+    <input type="submit" id="decode" value="Decode"/>
+    </p>
+</form>
+
+<form id="vigenere_encode" class="bloc" action="#">
+    <h1> Tool : Encode Vigenere </h1>
+    <p><label>Your text </label><input type="text" id="text_encode" /></p>
+    <p><label>Key</label><input type="text" id="key_encode" /></p>
+    <p class="center"><input type="submit" value="Execute" /></p>
+</form>
+
+<form id="vigenere_decode" class="bloc" action="#">
+    <h1>Tool : Decode Vigenere </h1>
+    <p><label>You text </label><input type="text" id="text_decode"/></p>
+    <p><label>Key</label><input type="text" id="key_decode" /></p>
+    <p class="center"><input type="submit" value="Execute" /></p>
+</form>
+
+<section class="bloc">
+    <h2> Result </h2>
+    Le resultat est <span id="result"> </span>
+</section>
+
+<script>
+    
+    var    v_table = [
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "BCDEFGHIJKLMNOPQRSTUVWXYZA",
+      "CDEFGHIJKLMNOPQRSTUVWXYZAB",
+      "DEFGHIJKLMNOPQRSTUVWXYZABC",
+      "EFGHIJKLMNOPQRSTUVWXYZABCD",
+      "FGHIJKLMNOPQRSTUVWXYZABCDE",
+      "GHIJKLMNOPQRSTUVWXYZABCDEF",
+      "HIJKLMNOPQRSTUVWXYZABCDEFG",
+      "IJKLMNOPQRSTUVWXYZABCDEFGH",
+      "JKLMNOPQRSTUVWXYZABCDEFGHI",
+      "KLMNOPQRSTUVWXYZABCDEFGHIJ",
+      "LMNOPQRSTUVWXYZABCDEFGHIJK",
+      "MNOPQRSTUVWXYZABCDEFGHIJKL",
+      "NOPQRSTUVWXYZABCDEFGHIJKLM",
+      "OPQRSTUVWXYZABCDEFGHIJKLMN",
+      "PQRSTUVWXYZABCDEFGHIJKLMNO",
+      "QRSTUVWXYZABCDEFGHIJKLMNOP",
+      "RSTUVWXYZABCDEFGHIJKLMNOPQ",
+      "STUVWXYZABCDEFGHIJKLMNOPQR",
+      "TUVWXYZABCDEFGHIJKLMNOPQRS",
+      "UVWXYZABCDEFGHIJKLMNOPQRST",
+      "VWXYZABCDEFGHIJKLMNOPQRSTU",
+      "WXYZABCDEFGHIJKLMNOPQRSTUV",
+      "XYZABCDEFGHIJKLMNOPQRSTUVW",
+      "YZABCDEFGHIJKLMNOPQRSTUVWX",
+      "ZABCDEFGHIJKLMNOPQRSTUVWXY",
+      "\0"
+    ];
+
+    function get_ind(c) {
+      var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      for (var i = 0; i < str.length; i++) {
+        if (c == str.charAt(i))
+          return i;
+      }
+      return 0;
+    }
+
+    function find_col_in_table(ind, c) {
+      for (var i = 0; i < v_table[ind].length; i++) {
+        if (v_table[ind].charAt(i) == c)
+          return (i);
+      }
+      return (0);
+    }
+
+    function VigenereEncode(cle, message) {
+        var resultat = "";
+        message = message.toUpperCase();
+        cle = cle.toUpperCase();
+        for (var i = 0; i < message.length; i++) {
+            if (message.charAt(i) == " ")
+              resultat += " ";
+            else {
+              var ind_c = get_ind(message.charAt(i));
+              var ind_e = get_ind(cle.charAt(i));
+              resultat += v_table[ind_e].charAt(ind_c);
+            }
+        }
+        return resultat;
+    }
+
+    function VigenereDecode(cle, message) {
+        var resultat = "";
+        message = message.toUpperCase();
+        cle = cle.toUpperCase();
+        for (var i = 0; i < message.length; i++) {
+            if (message.charAt(i) == " ")
+                resultat += " ";
+            else {
+                var ind_e = get_ind(cle.charAt(i));
+                var ind_c = find_col_in_table(ind_e, message.charAt(i));
+                resultat += v_table[0].charAt(ind_c);
+            }
+        }
+        return resultat;
+    }
+
+    $(document).ready(function() {
+
+        $('#vigenere_encode').hide();
+        $('#vigenere_decode').hide();
+
+        var encode_form = document.getElementById('encode');
+        var decode_form = document.getElementById('decode');
+
+       encode_form.addEventListener('click', function() {
+            $('#vigenere_encode').show();
+            $('#vigenere_decode').hide();
+            $('#result').html("");
+            return false;
+
+        });
+        decode_form.addEventListener('click', function() {
+            $('#vigenere_encode').hide();
+            $('#vigenere_decode').show();
+            $('#result').html("");
+            return false;
+        });
+
+        $('#vigenere_encode').submit(function() {
+            var result = VigenereEncode($("#key_encode").val(), $('#text_encode').val());
+            $('#result').html(" " + result);
+            return false;
+        });
+        $('#vigenere_decode').submit(function() {
+            var result = VigenereDecode($('#key_decode').val(), $('#text_decode').val());
+            $('#result').html(" " + result);
+            return false;
+        });
+    });
+</script>
