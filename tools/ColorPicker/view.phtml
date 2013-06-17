@@ -1,8 +1,40 @@
 <form class="bloc" action="#">  
 	<h1> Tool : Color Picker </h1>
 	<p class="center">
-    	<label>Click on the box : </label><input class="color">
+    	<label>Click on the box : </label><input id="mycolor" class="color">
     </p>
 </form>
+<section class="bloc">
+	<br />
+	<p class="center">
+		R <span id="red" class="bloc">100%</span>  G <span id="grn" class="bloc">100%</span>  B <span id="blu" class="bloc">100%</span>
+	</p><br />
+	<p class="center">
+		H <span id="hue" class="bloc">122°</span>  S <span id="sat" class="bloc">0%</span>  V <span id="val" class="bloc">100%</span>
+	</p>
+</section>
 
 <script type="text/javascript" src="js/jscolor/jscolor.js"></script>
+<script>
+	$(document).ready(function() {
+		var color = document.getElementById('mycolor');
+		color.addEventListener('change', function() {
+			var c_red = this.color.rgb[0] * 100;
+			var c_green = this.color.rgb[0] * 100;
+			var c_blue = this.color.rgb[2]*100;
+			var hue = this.color.hsv[0]* 60;
+			var sat = this.color.hsv[1]*100;
+			var val = this.color.hsv[2]*100;
+			c_red = c_red.toFixed();
+			c_green = c_green.toFixed();
+			c_blue = c_blue.toFixed();
+
+			$('#red').html("" + c_red + "%");
+			$('#grn').html("" + c_green + "%");
+			$('#blu').html("" + c_blue + "%");
+			$('#hue').html("" + hue + "&deg;");
+			$('#sat').html("" + sat + "%");
+			$('#val').html("" + val + "%");
+		});
+	});
+</script>
