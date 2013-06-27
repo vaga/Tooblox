@@ -11,7 +11,7 @@ class Date extends AbstractTool {
         $this->set('_title', 'Date');
         $this->set('_description', 'Print the current date and time for multi timezone.');
         $this->set('_keywords', 'world, clock, timezone, hour');
-        $this->set('_author', 'Etienne BONDOT');
+        $this->set('_author', 'Etienne Bondot');
     }
 
     function handlePost($req) {

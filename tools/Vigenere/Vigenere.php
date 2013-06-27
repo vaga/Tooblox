@@ -11,7 +11,7 @@ class Vigenere extends AbstractTool {
         $this->set('_title', 'Vigenere');
         $this->set('_description', 'Vigenere code and decode tool.');
         $this->set('_keywords', 'vigenere, code, decode, tool');
-        $this->set('_author', 'Etienne BONDOT');
+        $this->set('_author', 'Etienne Bondot');
     }
 
     function handlePost($req) {

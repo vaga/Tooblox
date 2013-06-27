@@ -11,7 +11,7 @@ class Timestamp extends AbstractTool {
         $this->set('_title', 'Timestamp');
         $this->set('_description', 'Print the timestamp since Epoch.');
         $this->set('_keywords', 'timestamp, epoch, time, date');
-        $this->set('_author', 'Etienne BONDOT');
+        $this->set('_author', 'Etienne Bondot');
     }
 
     function handlePost($req) {

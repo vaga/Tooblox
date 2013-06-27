@@ -78,6 +78,8 @@
         });
 
         $('#caesar_encode').submit(function() {
+            if (!isNumber($('#key_encode').val()))
+                errorHandler("Someting bad happened... You must enter a number key !");
             var result = CesarEncode($("#key_encode").val(), $('#text_encode').val());
             $('#result').html("" + result);
             return false;

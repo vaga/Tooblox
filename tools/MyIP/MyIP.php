@@ -11,7 +11,7 @@ class MyIP extends AbstractTool {
         $this->set('_title', 'IP');
         $this->set('_description', 'Find you IP.');
         $this->set('_keywords', 'ip, find');
-        $this->set('_author', 'Etienne BONDOT');
+        $this->set('_author', 'Etienne Bondot');
     }
 
     function handlePost($req) {

@@ -11,7 +11,7 @@ class Caesar extends AbstractTool {
 		$this->set('_title', 'Cesar');
         $this->set('_description', 'Cesare code and decode tool.');
         $this->set('_keywords', 'cesare, encode, decode, tool');
-        $this->set('_author', 'Fabien Caster');
+        $this->set('_author', 'Fabien Casters');
     }
 
     function handlePost($req) {

@@ -11,7 +11,7 @@ class Random extends AbstractTool {
         $this->set('_title', 'Random');
         $this->set('_description', 'A simple and real random generator.');
         $this->set('_keywords', 'random, generator, integer');
-        $this->set('_author', 'Etienne BONDOT');
+        $this->set('_author', 'Etienne Bondot');
     }
 
     function handlePost($req) {
