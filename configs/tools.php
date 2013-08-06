@@ -4,7 +4,7 @@ return [
     'home' => "Home",
     'caesar' => 'Caesar',
     'colorPicker' => 'ColorPicker',
-    'convert' => 'Convert',
+    'base-converter' => 'Base Converter',
     'date' => 'Date',
     'my-ip' => 'My IP',
     'password-generator' => 'Password Generator',
