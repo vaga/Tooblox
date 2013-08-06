@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     'home' => "Home",
     'caesar' => 'Caesar',
     'colorPicker' => 'ColorPicker',
@@ -10,4 +10,4 @@ return array(
     'random' => 'Random',
     'timestamp' => 'Timestamp',
     'vigenere' => 'Vigenere'
-);
+];
