@@ -56,7 +56,7 @@
             if (lower) chars += 'abcdefghijklmnopqrstuvwxyz';
             if (upper) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             if (numeric) chars += '0123456789';
-            if (special) chars += '~!@#$%&*()-_=+[]{};:,.<>/?';
+            if (special) chars += '~!@#$%&*()-_=+[]{};:,./?';
             var passwords = '';
             for (var j = 0; j < number; j++) {
 
@@ -68,7 +68,7 @@
             }
             $('#result').html(passwords);
 
-            return false;   
+            return false;
         });
     });
 </script>
