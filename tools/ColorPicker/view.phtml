@@ -4,13 +4,10 @@
     	<label>Click on the box : </label><input id="mycolor" class="color">
     </p>
 </form>
-<section class="bloc">
-	<br />
-	<p class="center">
-		R <span id="red" class="bloc">100%</span>  G <span id="grn" class="bloc">100%</span>  B <span id="blu" class="bloc">100%</span>
-	</p><br />
-	<p class="center">
-		H <span id="hue" class="bloc">122°</span>  S <span id="sat" class="bloc">0%</span>  V <span id="val" class="bloc">100%</span>
+<section class="bloc center">
+	<p class="inline">
+		R <span id="red" class="bloc">100</span>  G <span id="grn" class="bloc">100</span>  B <span id="blu" class="bloc" style="margin-right:50px;">100</span>
+		H <span id="hue" class="bloc">100</span>  S <span id="sat" class="bloc">100</span>  V <span id="val" class="bloc">100</span>
 	</p>
 </section>
 
@@ -29,12 +26,12 @@
 			c_green = c_green.toFixed();
 			c_blue = c_blue.toFixed();
 
-			$('#red').html("" + c_red + "%");
-			$('#grn').html("" + c_green + "%");
-			$('#blu').html("" + c_blue + "%");
-			$('#hue').html("" + hue + "&deg;");
-			$('#sat').html("" + sat + "%");
-			$('#val').html("" + val + "%");
+			$('#red').html("" + Math.round(c_red));
+			$('#grn').html("" + Math.round(c_green));
+			$('#blu').html("" + Math.round(c_blue));
+			$('#hue').html("" + Math.round(hue));
+			$('#sat').html("" + Math.round(sat));
+			$('#val').html("" + Math.round(val));
 		});
 	});
 </script>

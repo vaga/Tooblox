@@ -52,36 +52,37 @@
         return result;
     }
     $(document).ready(function() {
-        window.onload = function() {
+        window.onload = function(e) {
             $('#caesar_encode').hide();
             $('#caesar_decode').hide();
+            e.preventDefault();
         }
         var encode_form = document.getElementById('encode');
         var decode_form = document.getElementById('decode');
-        encode_form.addEventListener('click', function() {
+        encode_form.addEventListener('click', function(e) {
             $('#caesar_encode').show();
             $('#caesar_decode').hide();
             $('#result').html("");
-            return false;
+            e.preventDefault();
 
         });
-        decode_form.addEventListener('click', function() {
+        decode_form.addEventListener('click', function(e) {
             $('#caesar_encode').hide();
             $('#caesar_decode').show();
             $('#result').html("");
-            return false;
+            e.preventDefault();
         });
-        $('#caesar_encode').submit(function() {
+        $('#caesar_encode').submit(function(e) {
             if (!isNumber($('#key_encode').val()))
                 errorHandler("Someting bad happened... You must enter a number key !");
             var result = CesarEncode($("#key_encode").val(), $('#text_encode').val());
             $('#result').html("" + result);
-            return false;
+            e.preventDefault();
         });
-        $('#caesar_decode').submit(function() {
+        $('#caesar_decode').submit(function(e) {
             var result = CesarDecode($('#text_decode').val());
             $('#result').html("" + result);
-            return false;
+            e.preventDefault();
         });
     });
 </script>

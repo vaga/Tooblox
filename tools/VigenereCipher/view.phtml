@@ -17,7 +17,7 @@
 
 <form id="vigenere_decode" class="bloc" action="#">
     <h1>Tool : Decode Vigenere </h1>
-    <p><label>You text </label><input type="text" id="text_decode"/></p>
+    <p><label>Your text </label><input type="text" id="text_decode"/></p>
     <p><label>Key</label><input type="text" id="key_decode" /></p>
     <p class="center"><input type="submit" value="Execute" /></p>
 </form>
@@ -108,29 +108,29 @@
         $('#vigenere_decode').hide();
         var encode_form = document.getElementById('encode');
         var decode_form = document.getElementById('decode');
-        encode_form.addEventListener('click', function() {
+        encode_form.addEventListener('click', function(e) {
             $('#vigenere_encode').show();
             $('#vigenere_decode').hide();
             $('#result').html("");
-            return false;
+            e.preventDefault();
 
         });
-        decode_form.addEventListener('click', function() {
+        decode_form.addEventListener('click', function(e) {
             $('#vigenere_encode').hide();
             $('#vigenere_decode').show();
             $('#result').html("");
-            return false;
+            e.preventDefault();
         });
 
-        $('#vigenere_encode').submit(function() {
+        $('#vigenere_encode').submit(function(e) {
             var result = VigenereEncode($("#key_encode").val(), $('#text_encode').val());
             $('#result').html(" " + result);
-            return false;
+            e.preventDefault();
         });
-        $('#vigenere_decode').submit(function() {
+        $('#vigenere_decode').submit(function(e) {
             var result = VigenereDecode($('#key_decode').val(), $('#text_decode').val());
             $('#result').html(" " + result);
-            return false;
+            e.preventDefault();
         });
     });
 </script>
