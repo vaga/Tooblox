@@ -8,7 +8,7 @@ class ColorPicker extends AbstractTool {
 
     function __construct() {
 
-		$this->set('_title', 'ColorPicker');
+		$this->set('_title', 'Color Picker');
         $this->set('_description', 'A simple color picker from jsColor.');
         $this->set('_keywords', 'color, picker, js');
         $this->set('_author', '');
