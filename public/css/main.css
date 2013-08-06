@@ -5,7 +5,7 @@ a {text-decoration: none;}
 
 /** GENERAL **/
 body { background: #fff; font-family: "Roboto", sans-serif; }
-h1, h2, h3 { font-family: "Roboto", sans-serif; text-shadow: 0 -1px 1px rgba(0, 0, 0, .5); }
+h1, h2, h3 { font-family: "Roboto", sans-serif; }
 .center {text-align: center;}
 
 
@@ -115,9 +115,10 @@ article form input[type=text] {
 article form input[type=submit] {
     margin-top: 10px;
     background: #3F72D8;
-    width: 200px;
-    padding: 10px;
+    width: 150px;
+    padding: 8px;
     color: #fff;
+    font-size: 15px;
 }
 
 article form .color {
@@ -140,24 +141,46 @@ article #error-msg {
 .ui-helper-hidden-accessible {
     display: none;
 }
-ul.ui-autocomplete {
-    position:absolute;
-    top: 0;
-    left: 0;
-    width: 445px;
-}
-.ui-menu-item a {
-    display:block;
-    background: #F8F8F8;
-    border-left: 1px solid #A8A8A8;
-    border-right: 1px solid #A8A8A8;
-    border-bottom: 1px solid #A8A8A8;
-    padding: 10px;
-}
-a.ui-state-focus {
-    background: #F3F3F3;
-    border-left: 6px solid #3F72D8;
-}
+
+    /* UI Complete */
+    ul.ui-autocomplete {
+        position:absolute;
+        top: 0;
+        left: 0;
+        width: 445px;
+    }
+    .ui-menu-item a {
+        display:block;
+        background: #F8F8F8;
+        border-left: 1px solid #A8A8A8;
+        border-right: 1px solid #A8A8A8;
+        border-bottom: 1px solid #A8A8A8;
+        padding: 10px;
+    }
+    a.ui-state-focus {
+        background: #F3F3F3;
+        border-left: 6px solid #3F72D8;
+    }
+
+    /* UI Buttonset */
+    .buttonset {
+        margin-top: 5px;
+    }
+    .ui-button {
+        cursor: pointer;
+        display: inline-block;
+        margin-right: -5px;
+        background: #F8F8F8;
+        padding: 5px 15px;
+        border-top: 1px solid #A8A8A8;
+        border-left: 1px solid #A8A8A8;
+        border-right: 1px solid #A8A8A8;
+        border-bottom: 5px solid #A8A8A8;
+    }
+    .ui-state-active {
+        border-bottom: 5px solid #3F72D8;
+        background: #F3F3F3;
+    }
 
 /** FOOTER **/
 footer {

@@ -8,7 +8,8 @@ function errorHandler(msg) {
 $(document).ready(function() {
     $("#tools").autocomplete({
         source: tools,
-        select: function() {
+        select: function(e, ui) {
+            $('#tools').val(ui.item.value);
             $('header form').submit();
         }
     });

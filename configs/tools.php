@@ -7,6 +7,7 @@ return [
     'convert' => 'Convert',
     'date' => 'Date',
     'my-ip' => 'My IP',
+    'password-generator' => 'Password Generator',
     'random' => 'Random',
     'timestamp' => 'Timestamp',
     'vigenere' => 'Vigenere'

@@ -1,0 +1,74 @@
+<section class="bloc">
+    <h1> Tool : Password Generator </h1>
+    <form id="generate" action="" method="get">
+        <p>
+            <label>Choose your characters</label>
+            <span class="buttonset">
+                <input type="checkbox" id="lower" checked="checked" /><label for="lower">a - z</label>
+                <input type="checkbox" id="upper" checked="checked" /><label for="upper">A - Z</label>
+                <input type="checkbox" id="numeric" /><label for="numeric">0 - 9</label>
+                <input type="checkbox" id="special" /><label for="special"># & - _ / ...</label>
+            </span>
+        </p>
+        <p>
+            <label>Password length</label>
+            <input id="length" type="text" name="length" value="8" />
+        </p>
+        <p>
+            <label>Password's number</label>
+            <input id="number" type="text" name="length" value="1" />
+        </p>
+        <p class="center">
+            <input type="submit" value="Generate" />
+        </p>
+    </form>
+</section>
+<section class="bloc">
+    <h2>Results</h2>
+    <div id="result">
+    </div>
+</section>
+
+<script>
+    function Random(min, max) {
+        var res = Math.floor(Math.random() * (max - min + 1)) + min;
+        return res;
+    }
+    $(document).ready(function() {
+        $('.buttonset').buttonset();
+        $('.buttonset').buttonset('refresh');
+        $('#generate').submit(function(){
+            var length = $('#length').val();
+            var number = $('#number').val();
+            var lower = $('#lower').is(':checked');
+            var upper = $('#upper').is(':checked');
+            var numeric = $('#numeric').is(':checked');
+            var special = $('#special').is(':checked');
+            if (!isNumber(length) || !isNumber(number)) {
+                errorHandler('Someting bad happened... You must enter a number !');
+                return false;
+            }
+            if (!upper && !lower && !numeric && !special) {
+                errorHandler('Someting bad happened... You must select characters !');
+                return false;
+            }
+            var chars = '';
+            if (lower) chars += 'abcdefghijklmnopqrstuvwxyz';
+            if (upper) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            if (numeric) chars += '0123456789';
+            if (special) chars += '~!@#$%&*()-_=+[]{};:,.<>/?';
+            var passwords = '';
+            for (var j = 0; j < number; j++) {
+
+                for (var i = 0; i < length; i++) {
+
+                    passwords += chars[Random(0, chars.length - 1)];
+                }
+                passwords += '<br />';
+            }
+            $('#result').html(passwords);
+
+            return false;   
+        });
+    });
+</script>
