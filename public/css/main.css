@@ -146,14 +146,18 @@ ul.ui-autocomplete {
     left: 0;
     width: 445px;
 }
-.ui-menu-item {
+.ui-menu-item a {
+    display:block;
     background: #F8F8F8;
     border-left: 1px solid #A8A8A8;
     border-right: 1px solid #A8A8A8;
     border-bottom: 1px solid #A8A8A8;
     padding: 10px;
 }
-
+a.ui-state-focus {
+    background: #F3F3F3;
+    border-left: 6px solid #3F72D8;
+}
 
 /** FOOTER **/
 footer {

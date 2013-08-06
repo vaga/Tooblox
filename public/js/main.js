@@ -7,6 +7,9 @@ function errorHandler(msg) {
 
 $(document).ready(function() {
     $("#tools").autocomplete({
-        source: tools
+        source: tools,
+        select: function() {
+            $('header form').submit();
+        }
     });
 });
