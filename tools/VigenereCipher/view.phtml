@@ -1,9 +1,12 @@
-<form id="choice" class="bloc" action="#">
-    <p class="center">
-    <input type="submit" id="encode" value="Encode"/>
-    <input type="submit" id="decode" value="Decode"/>
-    </p>
-</form>
+<div class="bloc">
+    <h1>Tool : Vigenere Cipher</h1>
+    <form id="choice" action="#">
+        <p class="center">
+        <input type="submit" id="encode" value="Encode"/>
+        <input type="submit" id="decode" value="Decode"/>
+        </p>
+    </form>
+</div>
 
 <form id="vigenere_encode" class="bloc" action="#">
     <h1> Tool : Encode Vigenere </h1>
@@ -25,7 +28,6 @@
 </section>
 
 <script>
-    
     var    v_table = [
       "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
       "BCDEFGHIJKLMNOPQRSTUVWXYZA",
@@ -55,7 +57,6 @@
       "ZABCDEFGHIJKLMNOPQRSTUVWXY",
       "\0"
     ];
-
     function get_ind(c) {
       var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       for (var i = 0; i < str.length; i++) {
@@ -64,7 +65,6 @@
       }
       return 0;
     }
-
     function find_col_in_table(ind, c) {
       for (var i = 0; i < v_table[ind].length; i++) {
         if (v_table[ind].charAt(i) == c)
@@ -72,7 +72,6 @@
       }
       return (0);
     }
-
     function VigenereEncode(cle, message) {
         var resultat = "";
         message = message.toUpperCase();
@@ -88,7 +87,6 @@
         }
         return resultat;
     }
-
     function VigenereDecode(cle, message) {
         var resultat = "";
         message = message.toUpperCase();
@@ -104,16 +102,13 @@
         }
         return resultat;
     }
-
     $(document).ready(function() {
 
         $('#vigenere_encode').hide();
         $('#vigenere_decode').hide();
-
         var encode_form = document.getElementById('encode');
         var decode_form = document.getElementById('decode');
-
-       encode_form.addEventListener('click', function() {
+        encode_form.addEventListener('click', function() {
             $('#vigenere_encode').show();
             $('#vigenere_decode').hide();
             $('#result').html("");

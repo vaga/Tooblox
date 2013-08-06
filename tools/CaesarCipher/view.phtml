@@ -1,30 +1,29 @@
-<form id="choice" class="bloc" action="#">
-    <p class="center">
-    <input type="submit" id="encode" value="Encode"/>
-    <input type="submit" id="decode" value="Decode"/>
-    </p>
-</form>
-
+<div class="bloc">
+    <h1>Tool : Caesar Cipher</h1>
+    <form id="choice" action="#">
+        <p class="center">
+        <input type="submit" id="encode" value="Encode"/>
+        <input type="submit" id="decode" value="Decode"/>
+        </p>
+    </form>
+</div>
 <form id="caesar_encode" class="bloc" action="#">
     <h1> Tool : Encode Caesar </h1>
     <p><label>Your text</label><input type="text" id="text_encode" /></p>
     <p><label>Key</label><input type="text" id="key_encode" /></p>
     <p class="center"><input type="submit" value="Execute" /></p>
 </form>
-
 <form id="caesar_decode" class="bloc" action="#" >
     <h1>Tool : Decode Caesar </h1>
     <p><label>Your text</label><input type="text" id="text_decode"/></p>
     <p class="center"><input type="submit" value="Execute" /></p>
 </form>
-
 <section class="bloc">
     <h2> Result </h2>
     Le resultat est <span id="result"> </span>
 </section>
 
 <script>
-
     function CesarEncode(cle, message) {
         var resultat = "";
         var decalage = parseInt(cle);
@@ -37,7 +36,6 @@
         }
         return resultat;
     }
-
     function CesarDecode(message) {
         var result = "<br />";
         var length = message.length;
@@ -53,16 +51,13 @@
         }
         return result;
     }
-
     $(document).ready(function() {
         window.onload = function() {
             $('#caesar_encode').hide();
             $('#caesar_decode').hide();
         }
-
         var encode_form = document.getElementById('encode');
         var decode_form = document.getElementById('decode');
-        
         encode_form.addEventListener('click', function() {
             $('#caesar_encode').show();
             $('#caesar_decode').hide();
@@ -76,7 +71,6 @@
             $('#result').html("");
             return false;
         });
-
         $('#caesar_encode').submit(function() {
             if (!isNumber($('#key_encode').val()))
                 errorHandler("Someting bad happened... You must enter a number key !");

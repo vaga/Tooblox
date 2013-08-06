@@ -2,13 +2,13 @@
 
 return [
     'home' => "Home",
-    'caesar' => 'Caesar',
-    'colorPicker' => 'ColorPicker',
+    'caesar-cipher' => 'Caesar Cipher',
+    'color-picker' => 'Color Picker',
     'base-converter' => 'Base Converter',
     'date' => 'Date',
     'my-ip' => 'My IP',
     'password-generator' => 'Password Generator',
     'random' => 'Random',
     'timestamp' => 'Timestamp',
-    'vigenere' => 'Vigenere'
+    'vigenere-cipher' => 'Vigenere Cipher'
 ];
