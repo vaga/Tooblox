@@ -10,17 +10,15 @@
 <script>
 
 
-	function verif_input() {
-		if ($('#decimal').val() != '' && !isNumber($('#decimal').val()) &&
-			$('#binary').val() != '' && !isNumber($('#binary').val()) &&
-			$('#hexa').val() != '' && !isNumber($('#hexa').val()))
+	function verif_input(value) {
+		if (value == '' || !isNumber(value))
 			return false;
 		return true;
 	}
 
 	$('#binary').keyup(function(e) {
 		if (e.keyCode == 13) {
-			if (verif_input() == false) errorHandler("Something bad happened...");
+			if (verif_input($('#binary').val()) == false) errorHandler("Something bad happened...");
 			else {
 				$('#decimal').val(parseInt($('#binary').val(), 2));
 				$('#hexa').val(parseInt($('#binary').val(), 2).toString(16).toUpperCase());
@@ -30,7 +28,7 @@
 
 	$('#decimal').keyup(function(e) {
 		if (e.keyCode == 13) {
-			if (verif_input() == false) errorHandler("Something bad happened...");
+			if (verif_input($('#decimal').val()) == false) errorHandler("Something bad happened...");
 			else {
 				$('#hexa').val(($('#decimal').val() - 0).toString(16).toUpperCase());
 				$('#binary').val(($('#decimal').val() - 0).toString(2));
@@ -40,7 +38,7 @@
 
 	$('#hexa').keyup(function(e) {
 		if (e.keyCode == 13) {
-			if (verif_input() == false) errorHandler("Something bad happened...");
+			if (verif_input($('#hexa').val()) == false) errorHandler("Something bad happened...");
 			else {
 				$('#decimal').val(parseInt($('#hexa').val(), 16));
 				$('#binary').val(parseInt($('#hexa').val(), 16).toString(2));
