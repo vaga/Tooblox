@@ -1,82 +1,51 @@
 <form class="block" action="#" id="myform">
 	<h1>Tool : Base Converter</h1>
 	<p>Just fill one field of the form and click on the convert button.</p><br />
-	<p class="inline"><label>Decimal</label><input type="text" id="decimal"></p>
-	<p><label>Hexadecimal</label><input type="text" id="hexa"></p>
-	<p><label>Binary</label><input type="text" id="binary"></p>
-</form>
-
-<form class="block" action='#'>
-	<p class="center">
-		<input type="submit" id="convert" value="Convert">
-		<input type="submit" id="reset" value="Reset">
-	</p>
+	<p class="inline"><label>Binary</label><input type="text" id="binary" value=""></p>
+	<p><label>Decimal</label><input type="text" id="decimal" value=""></p>
+	<p><label>Hexadecimal</label><input type="text" id="hexa" value=""></p>
+	
 </form>
 
 <script>
 
-	var Form = document.getElementById('myform');
-	var dec = document.getElementById('decimal');
-	var hex = document.getElementById('hexa');
-	var bin = document.getElementById('binary');
-	var convert = document.getElementById('convert');
-	var reset = document.getElementById('reset');
-
-	function clearField() {
-		dec.value = '';
-		hex.value = '';
-		bin.value = '';
-	}
 
 	function verif_input() {
-		if ($('#decimal').val() != '' && !isNumber($('#decimal').val()))
-			return false;
-		if ($('#binary').val() != '' && !isNumber($('#binary').val()))
+		if ($('#decimal').val() != '' && !isNumber($('#decimal').val()) &&
+			$('#binary').val() != '' && !isNumber($('#binary').val()) &&
+			$('#hexa').val() != '' && !isNumber($('#hexa').val()))
 			return false;
 		return true;
 	}
 
-	function xdec()
-	{
-		hex.value = (dec.value-0).toString(16).toUpperCase();
-		bin.value = (dec.value-0).toString(2);
-	}
-
-	function xhex()
-	{
-		dec.value = parseInt(hex.value,16);
-		bin.value = (parseInt(hex.value,16)).toString(2);
-	}
-
-	function xbin()
-	{
-		dec.value = parseInt(bin.value,2);
-		hex.value = (parseInt(bin.value,2)).toString(16).toUpperCase();
-	}
-
-	convert.addEventListener('click', function() {
-		for (var i = 0; i < Form.length; i++) {
-			if (Form[i].value.length != 0) {
-				if (verif_input() == false) {
-					errorHandler("Something bad happened...");
-					return false;
-				}
-				else {
-					var res;
-					if (Form[i].getAttribute('id') == 'decimal')
-						xdec();
-					else if (Form[i].getAttribute('id') == 'hexa')
-						xhex();
-					else if (Form[i].getAttribute('id') == 'binary')
-						xbin();
-					return false;
-				}
+	$('#binary').keyup(function(e) {
+		if (e.keyCode == 13) {
+			if (verif_input() == false) errorHandler("Something bad happened...");
+			else {
+				$('#decimal').val(parseInt($('#binary').val(), 2));
+				$('#hexa').val(parseInt($('#binary').val(), 2).toString(16).toUpperCase());
 			}
 		}
 	});
 
-	reset.addEventListener('click', function() {
-		clearField();
+	$('#decimal').keyup(function(e) {
+		if (e.keyCode == 13) {
+			if (verif_input() == false) errorHandler("Something bad happened...");
+			else {
+				$('#hexa').val(($('#decimal').val() - 0).toString(16).toUpperCase());
+				$('#binary').val(($('#decimal').val() - 0).toString(2));
+			}
+		}
+	});
+
+	$('#hexa').keyup(function(e) {
+		if (e.keyCode == 13) {
+			if (verif_input() == false) errorHandler("Something bad happened...");
+			else {
+				$('#decimal').val(parseInt($('#hexa').val(), 16));
+				$('#binary').val(parseInt($('#hexa').val(), 16).toString(2));
+			}
+		}
 	});
 
 </script>
