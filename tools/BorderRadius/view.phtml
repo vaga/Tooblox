@@ -1,0 +1,90 @@
+<div class="bloc">
+    <h1>Tool : Border Radius</h1>
+    <div class="center">
+    	<span class="buttonset">
+                <input type="checkbox" id="webkit" checked="checked" /><label for="webkit">WebKit</label>
+                <input type="checkbox" id="gecko" checked="checked" /><label for="gecko">Gecko</label>
+                <input type="checkbox" id="css3" checked="checked"/><label for="css3">CSS3</label>
+        </span>
+	</div>
+	<div class="center">
+		<input type="text" placeholder="Radius" id="radius" />
+	</div>
+</div>
+
+<div id="bloc-radius">
+	<div id="bloc-radius-content" >
+		<ul class="radius-info center">
+			<li id="webkit-style"></li>
+			<li id="gecko-style"></li>
+			<li id="css3-style"></li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('.buttonset').buttonset();
+    $('.buttonset').buttonset('refresh');
+
+	function infos(value) {
+		if ($('#webkit').is(':checked')) {
+			$('#webkit-style').html("-webkit-border-radius: " + value + "px;");
+		}
+		if ($('#gecko').is(':checked')) {
+			$('#gecko-style').html("-moz-border-radius: " + value + "px;");
+		}
+		if ($('#css3').is(':checked')) {
+			$('#css3-style').html("border-radius: " + value +"px;");
+		}
+	}
+
+	function cleanup() {
+		$('#webkit-style').html("");
+		$('#gecko-style').html("");
+		$('#css3-style').html("");
+	}
+
+	$('#radius').keyup(function(e) {
+		if (e.keyCode == 13) {
+			cleanup();
+			var radius = $('#radius').val();
+			if (isNumber($('#radius').val())) {
+				if ($('#css3').checked) {
+					$('#bloc-radius-content').css({
+						borderTopLeftRadius: radius, 
+	    				borderTopRightRadius: radius, 
+					    borderBottomLeftRadius: radius, 
+					    borderBottomRightRadius: radius,
+					  });
+				}
+				if ($('#webkit').checked) {
+					$('#bloc-radius-content').css({
+						WebkitBorderTopLeftRadius: radius, 
+					    WebkitBorderTopRightRadius: radius, 
+					    WebkitBorderBottomLeftRadius: radius, 
+					    WebkitBorderBottomRightRadius: radius,
+					});
+				}
+				if ($('#gecko').checked) {
+					$('#bloc-radius-content').css({
+						MozBorderRadius: radius
+					});
+				}
+
+				$('#bloc-radius-content').animate ({
+				    borderTopLeftRadius: radius, 
+				    borderTopRightRadius: radius, 
+				    borderBottomLeftRadius: radius, 
+				    borderBottomRightRadius: radius,
+				    WebkitBorderTopLeftRadius: radius, 
+				    WebkitBorderTopRightRadius: radius, 
+				    WebkitBorderBottomLeftRadius: radius, 
+				    WebkitBorderBottomRightRadius: radius, 
+				    MozBorderRadius: radius 
+				}, 900);
+
+				infos(radius);
+			}
+		}
+	});
+</script>

@@ -2,6 +2,7 @@
 
 return [
     'home' => "Home",
+    'border-radius' => 'Border Radius',
     'caesar-cipher' => 'Caesar Cipher',
     'color-picker' => 'Color Picker',
     'base-converter' => 'Base Converter',
