@@ -1,9 +1,14 @@
 <form name="formulaire" class="bloc">
     <h1> Tool : Date </h1>
     <p>Choose your timezone : </p>
-	<p>Tokyo : <input type="radio" name="cities" value="villes" OnClick="heure_gmt(9); $('#res').show();"></p>
-	<p>Paris : <input type="radio" name="cities" value="villes" OnClick="heure_gmt(2); $('#res').show();"></p>
-	<p>New York : <input type="radio" name="cities" value="villes" OnClick="heure_gmt(-5); $('#res').show();"></p>
+    <span class="buttonset">
+        <input type="radio" name="cities" value="villes" OnClick="heure_gmt(9); $('#res').show();" id="tokyo" />
+        <label for="tokyo">Tokyo</label>
+        <input type="radio" name="cities" value="villes" OnClick="heure_gmt(2); $('#res').show();" id="paris" />
+        <label for="paris">Paris</label>
+        <input type="radio" name="cities" value="villes" OnClick="heure_gmt(-5); $('#res').show();" id="newyork" />
+        <label for="newyork">New York</label>
+    </span>
 </form>
 
 <section class="bloc" id="res">
@@ -11,6 +16,10 @@
 </section>
 
 <script>
+
+    $('.buttonset').buttonset();
+    $('.buttonset').buttonset('refresh');
+
     var memoire = 0;
     $(document).ready(function() {
         $('#res').hide();

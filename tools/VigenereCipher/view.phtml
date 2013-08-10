@@ -106,6 +106,7 @@
 
         $('#vigenere_encode').hide();
         $('#vigenere_decode').hide();
+
         var encode_form = document.getElementById('encode');
         var decode_form = document.getElementById('decode');
         encode_form.addEventListener('click', function(e) {
@@ -125,12 +126,12 @@
         $('#vigenere_encode').submit(function(e) {
             var result = VigenereEncode($("#key_encode").val(), $('#text_encode').val());
             $('#result').html(" " + result);
-            e.preventDefault();
+            return false;
         });
         $('#vigenere_decode').submit(function(e) {
             var result = VigenereDecode($('#key_decode').val(), $('#text_decode').val());
             $('#result').html(" " + result);
-            e.preventDefault();
+            return false;
         });
     });
 </script>
