@@ -99,10 +99,25 @@ article p {
     padding: 10px;
 }
 
-.radius-example {
-    width: 100%;
-    height: 50px;
-    border: 1px solid #999999;
+ #bloc-radius {
+    border: 1px solid #D8D8D8;
+    margin-top: 30px;
+    padding: 10px;
+    height:450px;
+    background-color:#F4F4F4
+}
+
+#bloc-radius-content {
+    border: 1px solid #D8D8D8;
+    -moz-box-shadow: inset 0 0 5px #888;
+    -webkit-box-shadow: inset 0 0 5px#888;
+    box-shadow: inner 0 0 5px #888;
+    background-color: #fff;
+    margin-top: 30px;
+    padding: 10px;
+    height:360px;
+    width:90%;
+    margin: 30px auto;
 }
 
 #radius {
@@ -114,6 +129,8 @@ article p {
     color: #000;
     font-size: 20px;
 }
+
+.radius-info {margin-top: 100px;}
 
 /** FORM **/
 article form p {
