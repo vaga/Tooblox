@@ -7,12 +7,11 @@
                 <input type="checkbox" id="css3" checked="checked"/><label for="css3">CSS3</label>
         </span>
 	</div>
-	<div class="center">
-		<input type="text" placeholder="Radius" id="radius" />
-	</div>
 </div>
 
 <div id="bloc-radius">
+	<input type="text" id="radius-top-left" value="0" class="radius-value">
+	<input type="text" id="radius-top-right" value="0" class="radius-value">
 	<div id="bloc-radius-content" >
 		<ul class="radius-info center">
 			<li id="webkit-style"></li>
@@ -20,21 +19,47 @@
 			<li id="css3-style"></li>
 		</ul>
 	</div>
+	<input type="text" id="radius-bottom-left" value="0" class="radius-value">
+	<input type="text" id="radius-bottom-right" value="0" class="radius-value">
 </div>
 
 <script type="text/javascript">
 	$('.buttonset').buttonset();
     $('.buttonset').buttonset('refresh');
 
-	function infos(value) {
+	function infos(top_left, top_right, bottom_left, bottom_right) {
 		if ($('#webkit').is(':checked')) {
-			$('#webkit-style').html("-webkit-border-radius: " + value + "px;");
+			$('#webkit-style').html("");
+			if (top_left != 0 && (top_left == top_right && top_right == bottom_left && bottom_left == bottom_right))
+				$('#webkit-style').html("-webkit-border-radius: " + top_left + "px;");
+			else {
+				if (top_left != 0) $('#webkit-style').append("-webkit-border-top-left-radius: " + top_left + "px;<br />");
+				if (top_right != 0) $('#webkit-style').append("-webkit-border-top-right-radius: " + top_right + "px;<br />");
+				if (bottom_left != 0) $('#webkit-style').append("-webkit-border-bottom-left-radius: " + bottom_left + "px;<br />");
+				if (bottom_right != 0) $('#webkit-style').append("-webkit-border-bottom-right-radius: " + bottom_right + "px;<br />");
+			}
 		}
 		if ($('#gecko').is(':checked')) {
-			$('#gecko-style').html("-moz-border-radius: " + value + "px;");
+			$('#gecko-style').html("");
+			if (top_left != 0 && (top_left == top_right && top_right == bottom_left && bottom_left == bottom_right))
+				$('#gecko-style').html("-moz-border-radius: " + top_left + "px;");
+			else {
+				if (top_left != 0) $('#gecko-style').append("-moz-border-radius-topleft: " + top_left + "px;<br />");
+				if (top_right != 0) $('#gecko-style').append("-moz-border-radius-topright: " + top_right + "px;<br />");
+				if (bottom_left != 0) $('#gecko-style').append("-moz-border-radius-bottomleft: " + bottom_left + "px;<br />");
+				if (bottom_right != 0) $('#gecko-style').append("-moz-border-radius-bottomright: " + bottom_right + "px;<br />");
+			}
 		}
 		if ($('#css3').is(':checked')) {
-			$('#css3-style').html("border-radius: " + value +"px;");
+			$('#css3-style').html("");
+			if (top_left != 0 && (top_left == top_right && top_right == bottom_left && bottom_left == bottom_right))
+				$('#css3-style').html("border-radius: " + top_left +"px;");
+			else  {
+				if (top_left != 0) $('#css3-style').append("border-top-left-radius: " + top_left +"px;<br />");
+				if (top_right != 0) $('#css3-style').append("border-top-right-radius: " + top_right +"px;<br />");
+				if (bottom_left != 0) $('#css3-style').append("border-bottom-left-radius: " + bottom_left +"px;<br />");
+				if (bottom_right != 0) $('#css3-style').append("border-bottom-right-radius: " + bottom_right +"px;<br />");
+			}
 		}
 	}
 
@@ -44,46 +69,77 @@
 		$('#css3-style').html("");
 	}
 
-	$('#radius').keyup(function(e) {
+	function check_values(top_left, top_right, bottom_left, bottom_right) {
+		$num_clean = 0;
+		$num_clean = top_left == 0 ? $num_clean + 1 : $num_clean;
+		$num_clean = top_right == 0 ? $num_clean + 1 : $num_clean;
+		$num_clean = bottom_left == 0 ? $num_clean + 1 : $num_clean;
+		$num_clean = bottom_right == 0 ? $num_clean + 1 : $num_clean;
+		if ($num_clean == 3) {
+			$value = 0;
+			$value = top_left == 0 ? $value : top_left;
+			$value = top_right == 0 ? $value : top_right;
+			$value = bottom_left == 0 ? $value : bottom_left;
+			$value = bottom_right == 0 ? $value : bottom_right;
+			$('.radius-value').val($value);
+		}
+	}
+
+	$('.radius-value').keyup(function(e) {
 		if (e.keyCode == 13) {
 			cleanup();
-			var radius = $('#radius').val();
-			if (isNumber($('#radius').val())) {
+
+			if (isNumber($('#radius-top-left').val()) && isNumber($('#radius-top-right').val()) &&
+				isNumber($('#radius-bottom-left').val()) && isNumber($('#radius-bottom-right').val())) {
+
+				check_values($('#radius-top-left').val(), $('#radius-top-right').val(), $('#radius-bottom-left').val(), $('#radius-bottom-right').val());
+
+				var radius_top_left = $('#radius-top-left').val();
+				var radius_top_right = $('#radius-top-right').val();
+				var radius_bottom_left = $('#radius-bottom-left').val();
+				var radius_bottom_right = $('#radius-bottom-right').val();				
+
 				if ($('#css3').checked) {
 					$('#bloc-radius-content').css({
-						borderTopLeftRadius: radius, 
-	    				borderTopRightRadius: radius, 
-					    borderBottomLeftRadius: radius, 
-					    borderBottomRightRadius: radius,
+						borderTopLeftRadius: radius_top_left, 
+	    				borderTopRightRadius: radius_top_right, 
+					    borderBottomLeftRadius: radius_bottom_left, 
+					    borderBottomRightRadius: radius_bottom_right
 					  });
 				}
 				if ($('#webkit').checked) {
 					$('#bloc-radius-content').css({
-						WebkitBorderTopLeftRadius: radius, 
-					    WebkitBorderTopRightRadius: radius, 
-					    WebkitBorderBottomLeftRadius: radius, 
-					    WebkitBorderBottomRightRadius: radius,
+						WebkitBorderTopLeftRadius: radius_top_left,
+					    WebkitBorderTopRightRadius: radius_top_right,
+					    WebkitBorderBottomLeftRadius: radius_bottom_left,
+					    WebkitBorderBottomRightRadius: radius_bottom_right
 					});
 				}
 				if ($('#gecko').checked) {
 					$('#bloc-radius-content').css({
-						MozBorderRadius: radius
+						MozBorderRadiusTopLeft: radius_top_left,
+						MozBorderRadiusTopRight: radius_top_right,
+						MozBorderRadiusBottomLeft: radius_bottom_left,
+						MozBorderRadiusBottomRight: radius_bottom_right
 					});
 				}
 
 				$('#bloc-radius-content').animate ({
-				    borderTopLeftRadius: radius, 
-				    borderTopRightRadius: radius, 
-				    borderBottomLeftRadius: radius, 
-				    borderBottomRightRadius: radius,
-				    WebkitBorderTopLeftRadius: radius, 
-				    WebkitBorderTopRightRadius: radius, 
-				    WebkitBorderBottomLeftRadius: radius, 
-				    WebkitBorderBottomRightRadius: radius, 
-				    MozBorderRadius: radius 
+				    borderTopLeftRadius: radius_top_left, 
+    				borderTopRightRadius: radius_top_right, 
+				    borderBottomLeftRadius: radius_bottom_left, 
+				    borderBottomRightRadius: radius_bottom_right,
+				    WebkitBorderTopLeftRadius: radius_top_left,
+				    WebkitBorderTopRightRadius: radius_top_right,
+				    WebkitBorderBottomLeftRadius: radius_bottom_left,
+				    WebkitBorderBottomRightRadius: radius_bottom_right,
+				    MozBorderRadiusTopLeft: radius_top_left,
+					MozBorderRadiusTopRight: radius_top_right,
+					MozBorderRadiusBottomLeft: radius_bottom_left,
+					MozBorderRadiusBottomRight: radius_bottom_right
 				}, 900);
 
-				infos(radius);
+				infos(radius_top_left, radius_top_right, radius_bottom_left, radius_bottom_right);
 			}
 		}
 	});

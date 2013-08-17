@@ -19,14 +19,12 @@ header {
     height: 60px;
     background: #3F72D8;
 }
-
 header .icon {
     width: 60px;
     height: 100%;
     float: left;
     margin-left: 2%;
 }
-
 header h1 a {
     float: left;
     margin-left: 20px;
@@ -103,7 +101,7 @@ article p {
     border: 1px solid #D8D8D8;
     margin-top: 30px;
     padding: 10px;
-    height:450px;
+    height:525px;
     background-color:#F4F4F4
 }
 
@@ -113,33 +111,31 @@ article p {
     -webkit-box-shadow: inset 0 0 5px#888;
     box-shadow: inner 0 0 5px #888;
     background-color: #fff;
-    margin-top: 30px;
-    padding: 10px;
     height:360px;
-    width:90%;
-    margin: 30px auto;
+    width:85%;
+    margin: 45px auto;
 }
 
-#radius {
-    width: 150px;
+.radius-info {margin-top: 50px;}
+#radius-top-right    {float: right}
+#radius-bottom-right {float: right}
+.radius-value {
+    text-align: center;
+    width: 30px;
     padding: 5px;
-    margin-top: 4px;
     border: 1px solid #A8A8A8;
-    background: #fff;
     color: #000;
     font-size: 20px;
 }
 
-.radius-info {margin-top: 100px;}
-
 /** FORM **/
-article form p {
-    margin-bottom: 5px;
-}
+article form p {margin-bottom: 5px;}
+
 article form label {
     display:block;
     padding-left: 10px;
 }
+
 article form input[type=text] {
     width: 765px;
     padding: 5px;
@@ -149,6 +145,7 @@ article form input[type=text] {
     color: #000;
     font-size: 20px;
 }
+
 article form input[type=submit] {
     margin-top: 10px;
     background: #3F72D8;
@@ -171,7 +168,6 @@ article #error-msg {
     background: #FFD2D3 url('../images/error.png') no-repeat;
     background-position: 5px center;
     color: #871414;
-
 }
 
 /** JQUERY UI **/
