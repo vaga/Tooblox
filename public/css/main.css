@@ -97,6 +97,7 @@ article p {
     padding: 10px;
 }
 
+/**  BORDER-RADIUS  **/
  #bloc-radius {
     border: 1px solid #D8D8D8;
     margin-top: 30px;
@@ -127,6 +128,14 @@ article p {
     color: #000;
     font-size: 20px;
 }
+
+/**  IMAGE-DROP  **/
+.block_sections {padding-bottom:15px; text-align: center;}
+.block_sections #preview-box {text-align: center;}
+div#preview-box {border: 1px solid #D8D8D8; padding: 10px;}
+
+.info div {text-align: center; display: inline-block;}
+div .info .input-text {width: auto;}
 
 /** FORM **/
 article form p {margin-bottom: 5px;}

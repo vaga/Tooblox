@@ -1,12 +1,13 @@
 <?php
 
 return [
-    'home' => "Home",
+    'home' => 'Home',
+    'base-converter' => 'Base Converter',
     'border-radius' => 'Border Radius',
     'caesar-cipher' => 'Caesar Cipher',
     'color-picker' => 'Color Picker',
-    'base-converter' => 'Base Converter',
     'date' => 'Date',
+    'image-crop' => 'Image Crop',
     'my-ip' => 'My IP',
     'password-generator' => 'Password Generator',
     'random' => 'Random',
