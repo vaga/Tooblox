@@ -85,63 +85,68 @@
 		}
 	}
 
-	$('.radius-value').keyup(function(e) {
-		if (e.keyCode == 13) {
-			cleanup();
+	function apply_radius() {
+		cleanup();
 
-			if (isNumber($('#radius-top-left').val()) && isNumber($('#radius-top-right').val()) &&
-				isNumber($('#radius-bottom-left').val()) && isNumber($('#radius-bottom-right').val())) {
+		if (isNumber($('#radius-top-left').val()) && isNumber($('#radius-top-right').val()) &&
+			isNumber($('#radius-bottom-left').val()) && isNumber($('#radius-bottom-right').val())) {
 
-				check_values($('#radius-top-left').val(), $('#radius-top-right').val(), $('#radius-bottom-left').val(), $('#radius-bottom-right').val());
+			check_values($('#radius-top-left').val(), $('#radius-top-right').val(), $('#radius-bottom-left').val(), $('#radius-bottom-right').val());
 
-				var radius_top_left = $('#radius-top-left').val();
-				var radius_top_right = $('#radius-top-right').val();
-				var radius_bottom_left = $('#radius-bottom-left').val();
-				var radius_bottom_right = $('#radius-bottom-right').val();				
+			var radius_top_left = $('#radius-top-left').val();
+			var radius_top_right = $('#radius-top-right').val();
+			var radius_bottom_left = $('#radius-bottom-left').val();
+			var radius_bottom_right = $('#radius-bottom-right').val();				
 
-				if ($('#css3').checked) {
-					$('#bloc-radius-content').css({
-						borderTopLeftRadius: radius_top_left, 
-	    				borderTopRightRadius: radius_top_right, 
-					    borderBottomLeftRadius: radius_bottom_left, 
-					    borderBottomRightRadius: radius_bottom_right
-					  });
-				}
-				if ($('#webkit').checked) {
-					$('#bloc-radius-content').css({
-						WebkitBorderTopLeftRadius: radius_top_left,
-					    WebkitBorderTopRightRadius: radius_top_right,
-					    WebkitBorderBottomLeftRadius: radius_bottom_left,
-					    WebkitBorderBottomRightRadius: radius_bottom_right
-					});
-				}
-				if ($('#gecko').checked) {
-					$('#bloc-radius-content').css({
-						MozBorderRadiusTopLeft: radius_top_left,
-						MozBorderRadiusTopRight: radius_top_right,
-						MozBorderRadiusBottomLeft: radius_bottom_left,
-						MozBorderRadiusBottomRight: radius_bottom_right
-					});
-				}
-
-				$('#bloc-radius-content').animate ({
-				    borderTopLeftRadius: radius_top_left, 
+			if ($('#css3').checked) {
+				$('#bloc-radius-content').css({
+					borderTopLeftRadius: radius_top_left, 
     				borderTopRightRadius: radius_top_right, 
 				    borderBottomLeftRadius: radius_bottom_left, 
-				    borderBottomRightRadius: radius_bottom_right,
-				    WebkitBorderTopLeftRadius: radius_top_left,
+				    borderBottomRightRadius: radius_bottom_right
+				  });
+			}
+			if ($('#webkit').checked) {
+				$('#bloc-radius-content').css({
+					WebkitBorderTopLeftRadius: radius_top_left,
 				    WebkitBorderTopRightRadius: radius_top_right,
 				    WebkitBorderBottomLeftRadius: radius_bottom_left,
-				    WebkitBorderBottomRightRadius: radius_bottom_right,
-				    MozBorderRadiusTopLeft: radius_top_left,
+				    WebkitBorderBottomRightRadius: radius_bottom_right
+				});
+			}
+			if ($('#gecko').checked) {
+				$('#bloc-radius-content').css({
+					MozBorderRadiusTopLeft: radius_top_left,
 					MozBorderRadiusTopRight: radius_top_right,
 					MozBorderRadiusBottomLeft: radius_bottom_left,
 					MozBorderRadiusBottomRight: radius_bottom_right
-				}, 900);
-
-				infos(radius_top_left, radius_top_right, radius_bottom_left, radius_bottom_right);
+				});
 			}
-			else errorHandler("Someting bad happened... You must enter a number for the radius value !");
+
+			$('#bloc-radius-content').animate ({
+			    borderTopLeftRadius: radius_top_left, 
+				borderTopRightRadius: radius_top_right, 
+			    borderBottomLeftRadius: radius_bottom_left, 
+			    borderBottomRightRadius: radius_bottom_right,
+			    WebkitBorderTopLeftRadius: radius_top_left,
+			    WebkitBorderTopRightRadius: radius_top_right,
+			    WebkitBorderBottomLeftRadius: radius_bottom_left,
+			    WebkitBorderBottomRightRadius: radius_bottom_right,
+			    MozBorderRadiusTopLeft: radius_top_left,
+				MozBorderRadiusTopRight: radius_top_right,
+				MozBorderRadiusBottomLeft: radius_bottom_left,
+				MozBorderRadiusBottomRight: radius_bottom_right
+			}, 900);
+
+			infos(radius_top_left, radius_top_right, radius_bottom_left, radius_bottom_right);
 		}
+		else errorHandler("Someting bad happened... You must enter a number for the radius value !");
+	}
+
+	$('.radius-value').keyup(function() {
+			apply_radius();
+		});
+	$('input[type=checkbox]').change(function() {
+		apply_radius();
 	});
 </script>
